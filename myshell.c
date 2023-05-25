@@ -1,25 +1,6 @@
 #include "main.h"
 
 /**
- * printenv - prints env
- *
- */
-
-extern char **environ;
-
-void printenv(void)
-{
-	char **env = environ;
-
-	while (*env != NULL)
-	{
-		write(STDOUT_FILENO, *env, strlen(*env));
-		write(STDOUT_FILENO, "\n", 1);
-		env++;
-	}
-}
-
-/**
  * read_input - a line of inpu
  * @lineptr: pointer to buf
  * @n: pointer to size
@@ -29,6 +10,7 @@ void printenv(void)
 ssize_t read_input(char **lineptr, size_t *n)
 {
 	const char *prompt = " $ ";
+
 	write(STDERR_FILENO, prompt, strlen(prompt));
 	return (getline(lineptr, n, stdin));
 }

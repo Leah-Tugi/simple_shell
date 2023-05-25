@@ -12,10 +12,12 @@
 
 void printenv(void)
 {
+
 char **env = environ;
 while (*env != NULL)
 {
-printf("%s\n", *env);
+write(STDOUT_FILENO, *env, strlen(*env));
+write(STDOUT_FILENO, "\n", 1);
 env++;
 }
 }
