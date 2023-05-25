@@ -3,9 +3,9 @@
 #include <unistd.h>
 #include <string.h>
 
-/*
+/**
  * execute_command - Executes a command in a child process.
- * @args: An array of arguments.
+ * @command: command
  * Return: If an error occurs - a corresponding error code.
  * O/w - The exit value of the last executed command.
  */
@@ -25,9 +25,9 @@ void execute_command(char *command)
 	printf("unknown cd: %s\n", command);
 }
 
-/*
+/**
  * main - Runs a simple UNIX command interpreter.
- * @argc: The number of arguments supplied to the program.
+ *
  * Return: always returns 0
  */
 int main(void)
