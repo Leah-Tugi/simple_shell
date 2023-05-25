@@ -16,7 +16,6 @@ int main(int ac, char **argv);
 void execmd(char **argv);
 char *get_location(char *command);
 void printenv(void);
-void execute_command(char *command);
-void execute_command(char *command, char **args);
+
 
 #endif

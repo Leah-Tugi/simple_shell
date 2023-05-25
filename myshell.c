@@ -9,7 +9,8 @@
  */
 ssize_t read_input(char **lineptr, size_t *n)
 {
-	printf(" $ ");
+	const char *prompt = " $ ";
+	write(STDERR_FILENO, prompt, strlen(prompt));
 	return (getline(lineptr, n, stdin));
 }
 
@@ -33,7 +34,9 @@ char **tokenize_input(char *line, const char *delim, int *num_tokens)
 	{
 		/*skip token if its "/bin/ls -l"*/
 		if (strcmp(token, " -l") == 0)
+		{
 			perror("error:");
+		}
 		else
 		{
 		args = realloc(args, sizeof(char *) * (*num_tokens + 1));
@@ -52,7 +55,7 @@ char **tokenize_input(char *line, const char *delim, int *num_tokens)
 		perror("sh: mem allocation error");
 		exit(EXIT_FAILURE);
 	}
-	args[*num_tokens] = NULL;
+
 
 	return (args);
 }
@@ -98,7 +101,7 @@ int main(int ac, char **argv)
 
 		if (nchars_read == -1)
 		{
-			printf("exiting shell....\n");
+			write(STDOUT_FILENO, "exiting shell....\n", strlen("exiting shell....\n"));
 			break;
 		}
 
