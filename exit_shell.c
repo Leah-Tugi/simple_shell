@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <string.h> 
+#include <string.h>
 
 /*
- * exit built-in that exits the shell
- * usage: in exit
- *
+ * execute_command - Executes a command in a child process.
+ * @args: An array of arguments.
+ * Return: If an error occurs - a corresponding error code.
+ * O/w - The exit value of the last executed command.
  */
-
-
 void execute_command(char *command)
 {
 	if (command == NULL)
@@ -26,16 +25,21 @@ void execute_command(char *command)
 	printf("unknown cd: %s\n", command);
 }
 
-int main()
+/*
+ * main - Runs a simple UNIX command interpreter.
+ * @argc: The number of arguments supplied to the program.
+ * Return: always returns 0
+ */
+int main(void)
 {
-	char *prompt = " $ " ;
+	char *prompt = " $ ";
 	char *lineptr = NULL;
 	size_t n = 0;
 	ssize_t nchars_read;
 
-	while (1) 
+	while (1)
 	{
-		printf ("%s", prompt);
+		printf("%s", prompt);
 		nchars_read = getline(&lineptr, &n, stdin);
 
 		if (nchars_read == -1)

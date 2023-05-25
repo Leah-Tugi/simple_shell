@@ -1,16 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <string.h> 
+#include <string.h>
 
 #define MAX_INPUT_LENGTH 100
 
-extern char **environ;
-
-void printenv()
+void printenv(void)
 {
 char **env = environ;
-	
 while (*env != NULL)
 {
 printf("%s\n", *env);
@@ -23,23 +20,22 @@ env++;
  *
  * Return: 0 on succes
  */
-int main()
+int main(void)
 {
-	
-char prompt[] = " $ "; 
-char command[MAX_INPUT_LENGTH]; 
 
+char prompt[] = " $ ";
+char command[MAX_INPUT_LENGTH];
 
 while (1)
 {
-printf ("%s", prompt);
+printf("%s", prompt);
 
 fgets(command, sizeof(command), stdin);
 command[strcspn(command, "\n")] = '\0';
 if (strcmp(command, "env") == 0)
 {
 printenv();
-}	
+}
 else if (strcmp(command, "exit") == 0)
 {
 printf("Exiting shell...\n");
@@ -51,5 +47,5 @@ printf("Unknown command: %s\n", command);
 }
 }
 
-return 0;
+return (0);
 }
