@@ -15,14 +15,8 @@ void free_arguments(char **args, int num_tokens);
 int main(int ac, char **argv);
 void execmd(char **argv);
 char *get_location(char *command);
-<<<<<<< HEAD
 void printenv(void);
 void execute_command(char *command);
-
-=======
-void printenv()
-void execute_command(char *command, char **args)
-void execute_command(char *command)
->>>>>>> bb66347c927ad29813c4db7919513d653cea6cb4
+void execute_command(char *command, char **args);
 
 #endif
