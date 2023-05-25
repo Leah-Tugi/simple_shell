@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-
+#include "main.h"
 
 #define MAX_INPUT_LENGTH 100
 /**
@@ -24,14 +24,17 @@ env++;
 
 /**
  * main - prints env
- *
+ * @ac: argumentss
+ * @argv: arguments
  * Return: 0 on succes
  */
-int main(void)
+int main(int ac, char **argv)
 {
-
 char prompt[] = " $ ";
 char command[MAX_INPUT_LENGTH];
+(void)ac;
+(void)argv;
+
 
 while (1)
 {

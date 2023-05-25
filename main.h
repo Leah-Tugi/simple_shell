@@ -9,6 +9,8 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 
+extern char **environ;
+
 ssize_t read_input(char **lineptr, size_t *n);
 char **tokenize_input(char *line, const char *delim, int *num_tokens);
 void free_arguments(char **args, int num_tokens);
