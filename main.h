@@ -13,5 +13,5 @@
 #include <dirent.h>
 #include <signal.h>
 
-int main(void)
+int main(void);
 #endif
