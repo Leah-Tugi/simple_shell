@@ -13,6 +13,18 @@
 #include <dirent.h>
 #include <signal.h>
 
+<<<<<<< HEAD
+=======
+extern char **environ;
+
+ssize_t read_input(char **lineptr, size_t *n);
+char **tokenize_input(char *line, const char *delim, int *num_tokens);
+void free_arguments(char **args, int num_tokens);
+int main(int ac, char **argv);
+void execmd(char **argv);
+char *get_location(char *command);
+void printenv(void);
+>>>>>>> 8636ca36835ee4c5428b1b18f2eafe69a528d65c
 
 extern char **environ;
 void _puts(char *str);
