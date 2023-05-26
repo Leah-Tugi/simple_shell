@@ -9,9 +9,13 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <wait.h>
-#include <fcntl.h>
-#include <dirent.h>
 #include <signal.h>
 
-int main(void);
+#define PROMPT "#cisfun$ "
+
+void start(data *d);
+void han_sig(int signal);
+void _exec(data *d);
+int main(int argc, char **argv);
+
 #endif
