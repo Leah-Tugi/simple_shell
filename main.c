@@ -1,15 +1,18 @@
 #include "main.h"
+
 /**
  * main - Entry to Simple Shell program.
  * @argc: Number of arguments.
  * @argv: Pointer to array of arguments.
  * Return: Always 0 if success else 1.
  */
+
 int main(int argc, char *argv[])
 {
 	char *line;
 	int Status;
 	char **tokens;
+
 	(void)argc;
 
 	signal(SIGINT, ctrlc);
@@ -17,31 +20,29 @@ int main(int argc, char *argv[])
 	while (Status == 0)
 	{
 		prompt();
-		line = pass_line();
-		if (_stringcomp(line, "\n") == 0)
+
+		line = read_line();
+		if (_strcmp(line, "\n") == 0)
 		{
 			tokens = NULL;
 			free(line);
 			continue;
 		}
-		tokens = _stringtotokens(line);
+		tokens = _strtotokens(line);
 		if (tokens[0] == NULL)
 		{
 			free(tokens);
 			free(line);
 			continue;
 		}
-		if (_stringcomp(tokens[0], "exit") == 0)
+
+		if (_strcmp(tokens[0], "exit") == 0)
 		{
-			_exitShell(tokens, line);
+			_exit_simple_shell(tokens, line);
 		}
 		else
 		{
-			Status =  _exec(tokens, argv[0]);
-			if (Status == -1)
-			{
-				Status = 0;
-			}
+			Status =  _execute(tokens, argv[0]);
 		}
 		free(line);
 		free(tokens);

@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _stringlength - Returns len of a string.
- * @s: Pointers to the exact string.
- * Return: Len of s.
+ * _strlen - Returns length of a string.
+ * @s: Pointer to string.
+ * Return: Length of s.
  */
-int _stringlength(char *s)
+int _strlen(char *s)
 {
 	int index;
 
@@ -17,18 +17,18 @@ int _stringlength(char *s)
 	return (index);
 }
 /**
- * _stringcat - Concatenates the two strings.
- * @dest: Pointer to string to be concatenated.
- * @src: Pointer to str to append to dest.
+ * _strcat - Concatenates two strings.
+ * @dest: Pointer to string to be conatenated upon.
+ * @src: Pointer to string to append to dest.
  * Return: Pointer to dest.
  */
-char *_stringcat(char *dest, char *src)
+char *_strcat(char *dest, char *src)
 {
 	char *destAddress;
 	int destLen;
 
 	destAddress = dest;
-	destLen = _stringlength(dest);
+	destLen = _strlen(dest);
 	destAddress = destAddress + destLen;
 	while (*src != '\0')
 	{
@@ -42,11 +42,11 @@ char *_stringcat(char *dest, char *src)
 }
 
 /**
- * _white_space_checker - checking the white space.
- * @s: Pointer to str to check.
+ * _check_white_space - checks for white space.
+ * @s: Pointer to string to check.
  * Return: integer.
  */
-unsigned int _white_space_checker(char *s)
+unsigned int _check_white_space(char *s)
 {
 	int i, count = 0;
 
@@ -59,15 +59,15 @@ unsigned int _white_space_checker(char *s)
 }
 
 /**
- * _stringtotokens - splits a given string into words.
+ * _strtotokens - splits a string into words.
  * @str: Pointer to string.
  * Return: Pointer to array of words.
  */
-char **_stringtotokens(char *str)
+char **_strtotokens(char *str)
 {
 	int i = 0;
 	const char delimeter[] = " \t\n";
-	int space = _white_space_checker(str);
+	int space = _check_white_space(str);
 	char **tokens = malloc(sizeof(char *) * (space + 1));
 	char *token;
 
@@ -94,19 +94,19 @@ char **_stringtotokens(char *str)
 
 
 /**
- * _printstring - prints a str, followed by new line, to stdout.
+ * _puts - prints a string, followed by a new line, to stdout.
  * @str: string to print.
  */
 
-void _printstring(char *str)
+void _puts(char *str)
 {
 	unsigned long i = 0;
 
 	while (str[i] != '\0')
 	{
-		_writechar(str[i]);
+		_putchar(str[i]);
 		i++;
 	}
 
-	_writechar('\n');
+	_putchar('\n');
 }

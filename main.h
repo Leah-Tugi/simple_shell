@@ -13,39 +13,35 @@
 #include <dirent.h>
 #include <signal.h>
 
+
 extern char **environ;
-
-void _printstring(char *str);
-char *pass_line(void);
-char *var_build(char *var_name, char *var_value);
-int _setenviron(char *var_name, char *var_value);
-int _unsetenviron(char *var_name);
-int _exec(char **tokens, char *args);
-int _stringlength(char *s);
-char *_stringcat(char *dest, char *src);
-unsigned int _white_space_checker(char *s);
-char **_stringtotokens(char *str);
-int _writechar(char c);
-int _stringcomp(char *s1, char *s2);
-int _atoi(char *s);
-char *_stringcpy(char *dest, char *src);
-int equal_delim(char c, const char *delim);
-char *_stringtokarr(char *src, const char *delim);
-void ctrlc(int signum);
-ssize_t custom_getline(char **str);
-char *_stringduplicate(char *str);
-void _exitShell(char **tokens, char *line);
-int _execBuiltIn(char **tokens);
-int _myBuiltIn(char *str);
-void _printsenvironment(void);
-int file_status(char *s);
-char *path_constructor(char **tokens);
-int path_execute(char **tokens, char *path, char *args);
-int main(int argc, char *argv[]);
+void _puts(char *str);
 void prompt(void);
-int _cd(char *path);
-
-/*void _kill(char *lineptr, char *tmp, char **tok);*/
-
+char *read_line(void);
+int _strlen(char *s);
+char *_strcat(char *dest, char *src);
+char **_strtotokens(char *str);
+int _execute(char **tokens, char *args);
+void _print_myenv(void);
+int _putchar(char c);
+int _strcmp(char *s1, char *s2);
+int _execute_in_built(char **tokens);
+int _in_built(char *str);
+int c_atoi(char *s);
+void _kill(char *lineptr, char *tmp, char **tok);
+void _exit_simple_shell(char **tokens, char *line);
+void ctrlc(int signum);
+int is_delim(char c, const char *delim);
+char *_strtok(char *src, const char *delim);
+char *_strcpy(char *dest, char *src);
+ssize_t get_line(char **str);
+int handle_path(char **tokens);
+int _file_exist(char *s);
+char *_build_path(char **tokens);
+int execute2(char **tokens, char *path, char *args);
+char *buid_var(char *var_name, char *var_value);
+int _setenv(char *var_name, char *var_value);
+int un_set_env(char *var_name);
+char *_strdup(char *str);
 
 #endif
