@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _setenviron - updates or adds an environment variable.
- * @var_name:variable name.
- * @var_value:variable value.
- * Return:0 - success, otherwise -1.
+ * _setenviron - updates or adds to shel an environment variable.
+ * @var_name: gieven variable name.
+ * @var_value: given variable value.
+ * Return: on 0 success otherwise -1.
  */
 
 int _setenviron(char *var_name, char *var_value)
@@ -15,13 +15,13 @@ int _setenviron(char *var_name, char *var_value)
 
 	name_len = _stringlength(var_name);
 	i = 0;
-	/*updating an existing variable*/
+
 	while (environ[i])
 	{
 		if (strncmp(environ[i], var_name, name_len) == 0)
 		{
 			var_new = buid_var(var_name, var_value);
-			/*Not sure but wanted to clear its mem b4 writing*/
+
 			environ[i] = NULL;
 			environ[i] = _stringduplicate(var_new);
 			free(environ[i]);
@@ -31,7 +31,7 @@ int _setenviron(char *var_name, char *var_value)
 		}
 		i++;
 	}
-	/*adding a variable that never existed before*/
+
 	var_new = buid_var(var_name, var_value);
 	free(environ[i]);
 	environ[i] = _stringduplicate(var_new);
@@ -42,9 +42,9 @@ int _setenviron(char *var_name, char *var_value)
 	return (0);
 }
 /**
- * buid_var - Builds an environment variable from its name and value.
- * @var_name: Variable name.
- * @var_value: Variable value.
+ * buid_var - Builds an environ var from its name and value.
+ * @var_name: given variable name.
+ * @var_value: given variable value.
  * Return: String containing full environment variable.
  */
 char *buid_var(char *var_name, char *var_value)
@@ -60,7 +60,7 @@ char *buid_var(char *var_name, char *var_value)
 		return (NULL);
 	}
 	memset(new_var, 0, var_len);
-	/*Data in the form: var_name=var_value*/
+
 	new_var = _stringcat(new_var, var_name);
 	new_var = _stringcat(new_var, "=");
 	new_var = _stringcat(new_var, var_value);

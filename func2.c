@@ -1,20 +1,10 @@
 #include "main.h"
 
 /**
- * writechar - Writes the character c to stdout.
- * @c: The character to print.
- * Return: On success - 1.
- */
-int writechar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
- * _stringcomp - Compares two strings.
- * @s1: Pointer to First string.
- * @s2: Pointer to Second string.
- * Return: 0 if they are equal, Otherwise - positive value.
+ * _stringcomp - Compares a given two strings.
+ * @s1: Pointer to given First string.
+ * @s2: Pointer to given Second string.
+ * Return: 0 if they are equal, Otherwise - value.
  */
 
 int _stringcomp(char *s1, char *s2)
@@ -30,9 +20,9 @@ int _stringcomp(char *s1, char *s2)
 	return (0);
 }
 /**
- * _atoi - Custom _atoi converts string to int.
+ * _atoi - Custom _atoi that converts thestring to int.
  * @s: string.
- * Return: Number if success, -1 if string contains non-numbers.
+ * Return: Number if success, -1 if stringn-numbers.
  */
 int _atoi(char *s)
 {
@@ -41,22 +31,29 @@ int _atoi(char *s)
 
 	while (s[i] != '\0')
 	{
-		if (s[i] >= '0' && s[i] <= '9') /* calculate num */
+		if (s[i] >= '0' && s[i] <= '9')
 			num = num * 10 + (s[i] - '0');
-		if (s[i] > '9' || s[i] < '0') /* account for non-numbers */
+		if (s[i] > '9' || s[i] < '0')
 			return (-1);
 		i++;
 	}
 	return (num);
 }
 
+/**
+ * writechar - writes th char c to stdout
+ * @c: char to print
+ * Return: on succes give -1
+ */
+int writechar(char c)
+{
+	return (write(1, &c, 1));
+}
 
 /**
- * _stringcopy - Copies the string pointed to by src,
- * including the terminating null byte (\0),
- * to the buffer pointed to by dest.
- * @dest: Copy source to this buffer.
- * @src: This is the source to copy.
+ * _stringcopy - Copies str pointed to by src to the buffer pointe dest.
+ * @dest: Copy source to this given buffer.
+ * @src: This is the source given to copy.
  * Return: Copy of original source.
  */
 

@@ -1,9 +1,23 @@
 #include "main.h"
 
 /**
- * equal_delim - Check if char is equal to delim.
- * @c: character.
- * @delim: " "
+ * ctrlc - this is the control c handler
+ * @signum: the signal num that has been received
+ *
+ * Return: void
+ */
+void ctrlc(int signum)
+{
+	(void)signum;
+
+	write(STDOUT_FILENO, "\n", 1);
+	exit(0);
+}
+
+/**
+ * equal_delim - Check if a given char is equal to the  delim.
+ * @c: char.
+ * @delim: refers to " "
  * Return: 0 if no match, 1 if matched.
  */
 
@@ -21,10 +35,10 @@ int equal_delim(char c, const char *delim)
 }
 
 /**
- * _stingtokarr - Mimics strtok, which tokenizes a string and turn to array.
- * @src: String from getline.
- * @delim: " ";
- * Return: Individual token in array format.
+ * _stingtokarr - Mimics strtokt tokenizes a string and turns it into array
+ * @src: Str from getline.
+ * @delim: refers to " ";
+ * Return: Individual token in a given array format.
  */
 
 char *_stingtokarr(char *src, const char *delim)
@@ -55,66 +69,9 @@ char *_stingtokarr(char *src, const char *delim)
 }
 
 /**
- *ctrlc - Control C handler.
- *@signum: The signal number received.
- *
- *Return: Void.
- */
-void ctrlc(int signum)
-{
-	(void)signum;
-
-	write(STDOUT_FILENO, "\n#cisfun$ ", 10);
-}
-
-
-/**
- * custom_getline - Stores into malloced buffer the user's command into shell.
- * @str: Buffer.
- * Return: Number of characters read.
- */
-ssize_t custom_getline(char **str)
-{
-	ssize_t i = 0, size = 0, t = 0, t2 = 0, n = 0;
-	char buff[1024];
-
-	/* read while there's stdin greater than buffsize; -1 to add a '\0' */
-	while (t2 == 0 && (i = read(STDIN_FILENO, buff, 1024 - 1)))
-	{
-		if (i == -1) /* check if read errored */
-			return (-1);
-
-		buff[i] = '\0'; /* terminate buff with \0 to use with _stringcat */
-
-		n = 0; /* last loop if \n is found in the stdin read */
-		while (buff[n] != '\0')
-		{
-			if (buff[n] == '\n')
-				t2 = 1;
-			n++;
-		}
-
-		/* copy what's read to buff into custom_getline's buffer */
-		if (t == 0) /* malloc the first time */
-		{
-			i++;
-			*str = malloc(sizeof(char) * i);
-			*str = _stringcopy(*str, buff);
-			size = i;
-			t = 1;
-		}
-		else /* _realloc via _stringcat with each loop */
-		{
-			size += i;
-			*str = _stringcat(*str, buff);
-		}
-	}
-	return (size);
-}
-/**
- *  _stringduplicate - Duplicates string.
- *  @str: String to duplicate.
- *  Return: Pointer to duplicated string in allocated memory.
+ * _stringduplicate - duplicates a given str
+ * @str: str required to be duplicated
+ * Return: ptr to duplicated str in alloc memm
  */
 char *_stringduplicate(char *str)
 {
@@ -125,7 +82,7 @@ char *_stringduplicate(char *str)
 		return (NULL);
 	while (str[len])
 		len++;
-	len++; /* add null terminator to length */
+	len++;
 	duplicate_str = malloc(sizeof(char) * len);
 	if (duplicate_str == NULL)
 		return (NULL);
@@ -136,4 +93,46 @@ char *_stringduplicate(char *str)
 		i++;
 	}
 	return (duplicate_str);
+}
+
+/**
+ * custom_getline - Stores malloced buffer of command into shell.
+ * @str: Buffer.
+ * Return: Num of chars read.
+ */
+ssize_t custom_getline(char **str)
+{
+	ssize_t i = 0, size = 0, t = 0, t2 = 0, n = 0;
+	char buff[1024];
+
+	while (t2 == 0 && (i = read(STDIN_FILENO, buff, 1024 - 1)))
+	{
+		if (i == -1)
+			return (-1);
+
+		buff[i] = '\0';
+
+		n = 0;
+		while (buff[n] != '\0')
+		{
+			if (buff[n] == '\n')
+				t2 = 1;
+			n++;
+		}
+
+		if (t == 0)
+		{
+			i++;
+			*str = malloc(sizeof(char) * i);
+			*str = _stringcopy(*str, buff);
+			size = i;
+			t = 1;
+		}
+		else
+		{
+			size += i;
+			*str = _stringcat(*str, buff);
+		}
+	}
+	return (size);
 }
