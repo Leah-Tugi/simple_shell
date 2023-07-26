@@ -48,7 +48,7 @@ void executeSetenvCommand(char **command)
  * executeUnsetenvCommand - executesz unset
  * @command: cmd array
  */
-void executeUnsetenvCommand(char **command);
+void executeUnsetenvCommand(char **command)
 {
 	unsetEnvironmentVariable(command);
 }
