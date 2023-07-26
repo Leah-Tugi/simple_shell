@@ -2,9 +2,9 @@
 
 
 /**
- * file_status - Checks the status of a file in shell.
- * @s: This is a pointer to the name of a file.
- * Return: 0 if success, 1 if not success.
+ * file_status - Checks file status.
+ * @s: Pointer to file name.
+ * Return: 0 if success, else non zero.
  */
 int file_status(char *s)
 {
@@ -15,9 +15,9 @@ int file_status(char *s)
 
 
 /**
- * path_constructor - This function constructs a path that leads to binaries..
- * @tokens: A double pointer that points to tokens.
- * Return: Return  path name, else return NULL.
+ * path_constructor - Constructs a path to binaries.
+ * @tokens: Double pointer to tokens.
+ * Return: Return - path, else - NULL.
  */
 char *path_constructor(char **tokens)
 {
@@ -40,11 +40,11 @@ char *path_constructor(char **tokens)
 }
 
 /**
- * path_exec - This function executes a file.
- * @tokens: To be used to split strings into tokens.
- * @path: Path from the path_constructor function.
- * @args: Program arguments to be passed.
- * Return: 0 - if the programs runs success, else return - 1.
+ * path_exec - Executes a file.
+ * @tokens: Split string into tokens from stdin.
+ * @path: Path from path_constructor function.
+ * @args: Program arguments.
+ * Return: 0 - on success, else - 1.
  */
 int path_exec(char **tokens, char *path, char *args)
 {

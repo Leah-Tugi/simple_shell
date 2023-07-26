@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _exec - Executes a given file.
- * @tokens: Split given string into tokens from stdin.
- * @args: Prog arguments.
+ * _exec - Executes a file.
+ * @tokens: Split string into tokens from stdin.
+ * @args: Program arguments.
  * Return: 0 if success. otherwise - 1.
  */
 int _exec(char **tokens, char *args)
@@ -12,20 +12,20 @@ int _exec(char **tokens, char *args)
 	pid_t child_pid;
 	int status;
 	char *path;
-
+	/* check if first token is a built in */
 	if (mybuiltin(*tokens) == 0)
 	{
 		status = _execmybuiltin(tokens);
 		return (status);
 	}
-
+	/* if path wasn't entered e.g ls, pwd, etc */
 	path = path_constructor(tokens);
 	if (path != NULL)
 	{
 		status = path_exec(tokens, path, args);
 		return (status);
 	}
-
+	/* if path was entered e.g /bin/ls */
 	child_pid = fork();
 	if (child_pid == -1)
 	{
@@ -49,3 +49,4 @@ int _exec(char **tokens, char *args)
 	wait(&status);
 	return (0);
 }
+

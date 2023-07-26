@@ -1,23 +1,21 @@
 #include "main.h"
 
 /**
- * _printstring - prints a str followed by newline to stdout
- * @str: string to print
+ * _stringlength - Returns length of a string.
+ * @s: Pointer to string.
+ * Return: Length of s.
  */
-
-void _printstring(char *str)
+int _stringlength(char *s)
 {
-	unsigned long i = 0;
+	int index;
 
-	while (str[i] != '\0')
+	index = 0;
+	while (s[index] != '\0')
 	{
-		writechar(str[i]);
-		i++;
+		index++;
 	}
-
-	writechar('\n');
+	return (index);
 }
-
 /**
  * _stringcat - Concatenates two strings.
  * @dest: Pointer to string to be conatenated upon.
@@ -59,27 +57,11 @@ unsigned int _white_space_check(char *s)
 	}
 	return (count);
 }
-/**
- * _stringlength - Returns the length of a given str
- * @s: ptr to a given str
- * Return: leth of s
- */
-int _stringlength(char *s)
-{
-	int index;
-
-	index = 0;
-	while (s[index] != '\0')
-	{
-		index++;
-	}
-	return (index);
-}
 
 /**
- * _stringtotoken - splits a given string into maany words.
- * @str: Pointer to a given string.
- * Return: refers to a Pointer to array of words.
+ * _stringtotoken - splits a string into words.
+ * @str: Pointer to string.
+ * Return: Pointer to array of words.
  */
 char **_stringtotoken(char *str)
 {
@@ -107,4 +89,24 @@ char **_stringtotoken(char *str)
 	tokens[i] =  NULL;
 
 	return (tokens);
+}
+
+
+
+/**
+ * _printstring - prints a string, followed by a new line, to stdout.
+ * @str: string to print.
+ */
+
+void _printstring(char *str)
+{
+	unsigned long i = 0;
+
+	while (str[i] != '\0')
+	{
+		writechar(str[i]);
+		i++;
+	}
+
+	writechar('\n');
 }
