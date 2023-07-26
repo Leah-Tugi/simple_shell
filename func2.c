@@ -30,11 +30,11 @@ int _stringcomp(char *s1, char *s2)
 	return (0);
 }
 /**
- * atoi - Custom atoi converts string to int.
+ * _atoi - Custom _atoi converts string to int.
  * @s: string.
  * Return: Number if success, -1 if string contains non-numbers.
  */
-int atoi(char *s)
+int _atoi(char *s)
 {
 	int i = 0;
 	unsigned int num = 0;
