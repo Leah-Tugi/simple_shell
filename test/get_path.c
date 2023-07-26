@@ -1,4 +1,4 @@
-#include "main"
+#include "main.h"
 
 /**
  * get_path - Constructs a path to binaries.

@@ -12,7 +12,7 @@ int _strcmp(char *stringA, char *stringB)
 
 	while (stringA[a] != '\0' || stringB[a] != '\0')
 	{
-		if (tringA[a] != stringB[a])
+		if (stringA[a] != stringB[a])
 			return (stringA[a] - stringB[b]);
 			a++;
 }

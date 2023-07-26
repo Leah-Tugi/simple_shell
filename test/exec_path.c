@@ -30,7 +30,7 @@ int exec_path(char **tokens, char *path, char *args)
 
 			write(STDERR_FILENO, erro, _strlen(erro));
 			free(tokens);
-			exit(EXIT_FAILURE)
+			exit(EXIT_FAILURE);
 		}
 		return (EXIT_SUCCESS);
 	}

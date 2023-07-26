@@ -52,7 +52,7 @@ void _exec(data *d)
 {
 	const char prompt[] = PROMPT;
 
-	signal(SIGINT, hand_sig);
+	signal(SIGINT, han_sig);
 
 	while (1)
 	{
