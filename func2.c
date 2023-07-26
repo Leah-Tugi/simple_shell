@@ -1,23 +1,23 @@
 #include "main.h"
 
 /**
- * _putchar - Writes the character c to stdout.
+ * writechar - Writes the character c to stdout.
  * @c: The character to print.
  * Return: On success - 1.
  */
-int _putchar(char c)
+int writechar(char c)
 {
 	return (write(1, &c, 1));
 }
 
 /**
- * _strcmp - Compares two strings.
+ * _stringcomp - Compares two strings.
  * @s1: Pointer to First string.
  * @s2: Pointer to Second string.
  * Return: 0 if they are equal, Otherwise - positive value.
  */
 
-int _strcmp(char *s1, char *s2)
+int _stringcomp(char *s1, char *s2)
 {
 	int i = 0;
 
@@ -30,11 +30,11 @@ int _strcmp(char *s1, char *s2)
 	return (0);
 }
 /**
- * c_atoi - Custom atoi converts string to int.
+ * atoi - Custom atoi converts string to int.
  * @s: string.
  * Return: Number if success, -1 if string contains non-numbers.
  */
-int c_atoi(char *s)
+int atoi(char *s)
 {
 	int i = 0;
 	unsigned int num = 0;
@@ -52,7 +52,7 @@ int c_atoi(char *s)
 
 
 /**
- * _strcpy - Copies the string pointed to by src,
+ * _stringcopy - Copies the string pointed to by src,
  * including the terminating null byte (\0),
  * to the buffer pointed to by dest.
  * @dest: Copy source to this buffer.
@@ -60,7 +60,7 @@ int c_atoi(char *s)
  * Return: Copy of original source.
  */
 
-char *_strcpy(char *dest, char *src)
+char *_stringcopy(char *dest, char *src)
 {
 	int i, len;
 

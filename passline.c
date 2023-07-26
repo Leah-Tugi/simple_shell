@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * read_line - Gets a typed line from the command line as a string.
+ * pass_line - Gets a typed line from the command line as a string.
  * Return: Pointer to the line(string).
  */
 
-char *read_line(void)
+char *pass_line(void)
 {
 	char *line =  NULL;
 	size_t len = 0;
@@ -16,7 +16,7 @@ char *read_line(void)
 	chars = getline(&line, &len, stdin);
 
 	/* custom get line */
-	/*chars = get_line(&line);*/
+	/*chars = custom_getline(&line);*/
 	if (chars == EOF)
 	{
 		free(line);

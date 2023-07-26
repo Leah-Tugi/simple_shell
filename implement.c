@@ -1,28 +1,28 @@
 #include "main.h"
 
 /**
- * _execute - Executes a file.
+ * _exec - Executes a file.
  * @tokens: Split string into tokens from stdin.
  * @args: Program arguments.
  * Return: 0 if success. otherwise - 1.
  */
-int _execute(char **tokens, char *args)
+int _exec(char **tokens, char *args)
 {
 	char *err1, *err2, *err3;
 	pid_t child_pid;
 	int status;
 	char *path;
 	/* check if first token is a built in */
-	if (_in_built(*tokens) == 0)
+	if (mybuiltin(*tokens) == 0)
 	{
-		status = _execute_in_built(tokens);
+		status = _execmybuiltin(tokens);
 		return (status);
 	}
 	/* if path wasn't entered e.g ls, pwd, etc */
-	path = _build_path(tokens);
+	path = path_constructor(tokens);
 	if (path != NULL)
 	{
-		status = execute2(tokens, path, args);
+		status = path_exec(tokens, path, args);
 		return (status);
 	}
 	/* if path was entered e.g /bin/ls */
@@ -37,10 +37,10 @@ int _execute(char **tokens, char *args)
 
 		if (execve(tokens[0], tokens, NULL) == -1)
 		{
-			err1 = _strcat(*tokens, ": No such file or directory\n");
-			err2 = _strcat(args, ":");
-			err3 = _strcat(err2, err1);
-			write(STDERR_FILENO, err3, _strlen(err3));
+			err1 = _stringcat(*tokens, ": No such file or directory\n");
+			err2 = _stringcat(args, ":");
+			err3 = _stringcat(err2, err1);
+			write(STDERR_FILENO, err3, _stringlength(err3));
 			free(tokens);
 			exit(EXIT_FAILURE);
 		}

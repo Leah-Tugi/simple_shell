@@ -2,11 +2,11 @@
 
 
 /**
- * _file_exist - Checks file status.
+ * file_status - Checks file status.
  * @s: Pointer to file name.
  * Return: 0 if success, else non zero.
  */
-int _file_exist(char *s)
+int file_status(char *s)
 {
 	struct stat st;
 
@@ -15,11 +15,11 @@ int _file_exist(char *s)
 
 
 /**
- * _build_path - Constructs a path to binaries.
+ * path_constructor - Constructs a path to binaries.
  * @tokens: Double pointer to tokens.
  * Return: Return - path, else - NULL.
  */
-char *_build_path(char **tokens)
+char *path_constructor(char **tokens)
 {
 	char path1[100] = "/bin/";
 	char path2[100] = "/usr/bin/";
@@ -27,26 +27,26 @@ char *_build_path(char **tokens)
 	char *finalPath1;
 	char *finalPath2;
 
-	finalPath1 = _strcat(path1, tokens[0]);
+	finalPath1 = _stringcat(path1, tokens[0]);
 
-	if ((_file_exist(finalPath1) == 0))
+	if ((file_status(finalPath1) == 0))
 		return (finalPath1);
 
-	finalPath2 = _strcat(path2, tokens[0]);
-	if ((_file_exist(finalPath2) == 0))
+	finalPath2 = _stringcat(path2, tokens[0]);
+	if ((file_status(finalPath2) == 0))
 		return (finalPath2);
 
 	return (NULL);
 }
 
 /**
- * execute2 - Executes a file.
+ * path_exec - Executes a file.
  * @tokens: Split string into tokens from stdin.
- * @path: Path from _build_path function.
+ * @path: Path from path_constructor function.
  * @args: Program arguments.
  * Return: 0 - on success, else - 1.
  */
-int execute2(char **tokens, char *path, char *args)
+int path_exec(char **tokens, char *path, char *args)
 {
 	char *err1, *err2, *err3;
 	pid_t child_pid;
@@ -65,10 +65,10 @@ int execute2(char **tokens, char *path, char *args)
 
 		if (execve(tokens[0], tokens, NULL) == -1)
 		{
-			err1 = _strcat(*tokens, ": No such file or directory\n");
-			err2 = _strcat(args, ":");
-			err3 = _strcat(err2, err1);
-			write(STDERR_FILENO, err3, _strlen(err3));
+			err1 = _stringcat(*tokens, ": No such file or directory\n");
+			err2 = _stringcat(args, ":");
+			err3 = _stringcat(err2, err1);
+			write(STDERR_FILENO, err3, _stringlength(err3));
 			free(tokens);
 			exit(EXIT_FAILURE);
 		}

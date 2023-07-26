@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _strlen - Returns length of a string.
+ * _stringlength - Returns length of a string.
  * @s: Pointer to string.
  * Return: Length of s.
  */
-int _strlen(char *s)
+int _stringlength(char *s)
 {
 	int index;
 
@@ -17,18 +17,18 @@ int _strlen(char *s)
 	return (index);
 }
 /**
- * _strcat - Concatenates two strings.
+ * _stringcat - Concatenates two strings.
  * @dest: Pointer to string to be conatenated upon.
  * @src: Pointer to string to append to dest.
  * Return: Pointer to dest.
  */
-char *_strcat(char *dest, char *src)
+char *_stringcat(char *dest, char *src)
 {
 	char *destAddress;
 	int destLen;
 
 	destAddress = dest;
-	destLen = _strlen(dest);
+	destLen = _stringlength(dest);
 	destAddress = destAddress + destLen;
 	while (*src != '\0')
 	{
@@ -42,11 +42,11 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * _check_white_space - checks for white space.
+ * _white_space_check - checks for white space.
  * @s: Pointer to string to check.
  * Return: integer.
  */
-unsigned int _check_white_space(char *s)
+unsigned int _white_space_check(char *s)
 {
 	int i, count = 0;
 
@@ -59,15 +59,15 @@ unsigned int _check_white_space(char *s)
 }
 
 /**
- * _strtotokens - splits a string into words.
+ * _stringtotoken - splits a string into words.
  * @str: Pointer to string.
  * Return: Pointer to array of words.
  */
-char **_strtotokens(char *str)
+char **_stringtotoken(char *str)
 {
 	int i = 0;
 	const char delimeter[] = " \t\n";
-	int space = _check_white_space(str);
+	int space = _white_space_check(str);
 	char **tokens = malloc(sizeof(char *) * (space + 1));
 	char *token;
 
@@ -94,19 +94,19 @@ char **_strtotokens(char *str)
 
 
 /**
- * _puts - prints a string, followed by a new line, to stdout.
+ * _printstring - prints a string, followed by a new line, to stdout.
  * @str: string to print.
  */
 
-void _puts(char *str)
+void _printstring(char *str)
 {
 	unsigned long i = 0;
 
 	while (str[i] != '\0')
 	{
-		_putchar(str[i]);
+		writechar(str[i]);
 		i++;
 	}
 
-	_putchar('\n');
+	writechar('\n');
 }

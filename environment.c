@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
- * _setenv - updates or adds an environment variable.
+ * _setenviron - updates or adds an environment variable.
  * @var_name:variable name.
  * @var_value:variable value.
  * Return:0 - success, otherwise -1.
  */
 
-int _setenv(char *var_name, char *var_value)
+int _setenviron(char *var_name, char *var_value)
 {
 	int i = 0;
 	size_t name_len;
 	char *var_new;
 
-	name_len = _strlen(var_name);
+	name_len = _stringlength(var_name);
 	i = 0;
 	/*updating an existing variable*/
 	while (environ[i])
@@ -23,9 +23,9 @@ int _setenv(char *var_name, char *var_value)
 			var_new = buid_var(var_name, var_value);
 			/*Not sure but wanted to clear its mem b4 writing*/
 			environ[i] = NULL;
-			environ[i] = _strdup(var_new);
+			environ[i] = _stringduplicate(var_new);
 			free(environ[i]);
-			environ[i] = _strdup(var_new);
+			environ[i] = _stringduplicate(var_new);
 			free(var_new);
 			return (0);
 		}
@@ -34,7 +34,7 @@ int _setenv(char *var_name, char *var_value)
 	/*adding a variable that never existed before*/
 	var_new = buid_var(var_name, var_value);
 	free(environ[i]);
-	environ[i] = _strdup(var_new);
+	environ[i] = _stringduplicate(var_new);
 	i++;
 	environ[i] = NULL;
 	var_new = NULL;
@@ -52,7 +52,7 @@ char *buid_var(char *var_name, char *var_value)
 	char *new_var;
 	size_t var_len;
 
-	var_len = _strlen(var_name) + _strlen(var_value) + 2;
+	var_len = _stringlength(var_name) + _stringlength(var_value) + 2;
 	new_var = malloc(sizeof(char) * var_len);
 	if (new_var == NULL)
 	{
@@ -61,24 +61,24 @@ char *buid_var(char *var_name, char *var_value)
 	}
 	memset(new_var, 0, var_len);
 	/*Data in the form: var_name=var_value*/
-	new_var = _strcat(new_var, var_name);
-	new_var = _strcat(new_var, "=");
-	new_var = _strcat(new_var, var_value);
+	new_var = _stringcat(new_var, var_name);
+	new_var = _stringcat(new_var, "=");
+	new_var = _stringcat(new_var, var_value);
 
 	return (new_var);
 }
 /**
- * un_set_env - Removes an environment variable.
+ * _unsetenviron - Removes an environment variable.
  * @var_name: Variable name.
  * Return: 0 if successful - 1,otherwise - -1.
  */
-int un_set_env(char *var_name)
+int _unsetenviron(char *var_name)
 {
 	int i = 0;
 	char **env_temp;
 	size_t name_len;
 
-	name_len = _strlen(var_name);
+	name_len = _stringlength(var_name);
 	while (environ[i])
 	{
 		if (strncmp(environ[i], var_name, name_len) == 0)

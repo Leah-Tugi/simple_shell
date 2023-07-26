@@ -21,14 +21,14 @@ int main(int argc, char *argv[])
 	{
 		prompt();
 
-		line = read_line();
-		if (_strcmp(line, "\n") == 0)
+		line = pass_line();
+		if (_stringcomp(line, "\n") == 0)
 		{
 			tokens = NULL;
 			free(line);
 			continue;
 		}
-		tokens = _strtotokens(line);
+		tokens = _stringtotoken(line);
 		if (tokens[0] == NULL)
 		{
 			free(tokens);
@@ -36,13 +36,13 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
-		if (_strcmp(tokens[0], "exit") == 0)
+		if (_stringcomp(tokens[0], "exit") == 0)
 		{
-			_exit_simple_shell(tokens, line);
+			_exitShell(tokens, line);
 		}
 		else
 		{
-			Status =  _execute(tokens, argv[0]);
+			Status =  _exec(tokens, argv[0]);
 		}
 		free(line);
 		free(tokens);
