@@ -9,17 +9,16 @@ char *pass_line(void)
 {
 	char *line =  NULL;
 	size_t len = 0;
-	/*int chars = 0;*/
+
 	ssize_t chars = 0;
 
-	/* inbuilt getline */
+
 	chars = getline(&line, &len, stdin);
 
-	/* custom get line */
-	/*chars = custom_getline(&line);*/
 	if (chars == EOF)
 	{
 		free(line);
+		write(STDOUT_FILENO, "^D\n", 3);
 		exit(0);
 	}
 	if (line == NULL)

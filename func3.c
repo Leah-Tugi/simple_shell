@@ -64,7 +64,8 @@ void ctrlc(int signum)
 {
 	(void)signum;
 
-	write(STDOUT_FILENO, "\n#cisfun$ ", 10);
+	write(STDOUT_FILENO, "\n", 1);
+	exit(0);
 }
 
 
