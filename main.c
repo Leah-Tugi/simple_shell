@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * main - Entry to Simple Shell program.
- * @argc: Number of arguments.
- * @argv: Pointer to array of arguments.
+ * main - Entry to my created Simple Shell program.
+ * @argc: Num of arguments.
+ * @argv: Ptr to array of arguments.
  * Return: Always 0 if success else 1.
  */
 

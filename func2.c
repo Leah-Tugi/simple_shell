@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * writechar - Writes the character c to stdout.
- * @c: The character to print.
+ * writechar - Writes the cha c to stdout.
+ * @c: The charto print.
  * Return: On success - 1.
  */
 int writechar(char c)
@@ -11,10 +11,10 @@ int writechar(char c)
 }
 
 /**
- * _stringcomp - Compares two strings.
- * @s1: Pointer to First string.
- * @s2: Pointer to Second string.
- * Return: 0 if they are equal, Otherwise - positive value.
+ * _stringcomp - Comparesi given two strings.
+ * @s1: Pointer to give First string.
+ * @s2: Pointer to  given Second string.
+ * Return: 0 ifqual, Otherwise - positive value.
  */
 
 int _stringcomp(char *s1, char *s2)
@@ -30,7 +30,7 @@ int _stringcomp(char *s1, char *s2)
 	return (0);
 }
 /**
- * _atoi - Custom _atoi converts string to int.
+ * _atoi - Custom _atoi converts given string to int.
  * @s: string.
  * Return: Number if success, -1 if string contains non-numbers.
  */
@@ -41,9 +41,9 @@ int _atoi(char *s)
 
 	while (s[i] != '\0')
 	{
-		if (s[i] >= '0' && s[i] <= '9') /* calculate num */
+		if (s[i] >= '0' && s[i] <= '9')
 			num = num * 10 + (s[i] - '0');
-		if (s[i] > '9' || s[i] < '0') /* account for non-numbers */
+		if (s[i] > '9' || s[i] < '0')
 			return (-1);
 		i++;
 	}
@@ -52,11 +52,9 @@ int _atoi(char *s)
 
 
 /**
- * _stringcopy - Copies the string pointed to by src,
- * including the terminating null byte (\0),
- * to the buffer pointed to by dest.
+ * _stringcopy - Copies the string pointed to by dest.
  * @dest: Copy source to this buffer.
- * @src: This is the source to copy.
+ * @src: This is the given srce to copy.
  * Return: Copy of original source.
  */
 
