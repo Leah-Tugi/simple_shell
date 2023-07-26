@@ -18,7 +18,7 @@ char *pass_line(void)
 	if (chars == EOF)
 	{
 		free(line);
-		write(STDOUT_FILENO, "^D\n", 3);
+		/*write(STDOUT_FILENO, "^D\n", 3);*/
 		exit(0);
 	}
 	if (line == NULL)
