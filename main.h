@@ -1,37 +1,51 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
 #include <string.h>
-#include <stddef.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <pwd.h>
-#include <errno.h>
-#include "main.h"
-
-#define INPUT_SIZE 510
-#define CUTTING_WORD " \n"
-#define ENDING_WORD "done"
-#define RESET 0
-
-void DisplayPrompt(void);
-char **parseInput(char *input, int *cmdLength);
-void freeCommand(char **command);
-void printEnvironment(void);
-void setEnvironmentVariable(char **command);
-void unsetEnvironmentVariable(char **command);
-void executeCommand(char **command);
-int main(void);
-void executeDefaultCommand(char **command);
-void executeUnsetenvCommand(char **command);
-void executeSetenvCommand(char **command);
-void executeEnvCommand(char **command);
-void executeExitCommand(char **command, int cmdLength);
-void executeCdCommand(char **command);
+#include <sys/stat.h>
+#include <wait.h>
+#include <fcntl.h>
+#include <dirent.h>
+#include <signal.h>
 
 extern char **environ;
+
+void _printstring(char *str);
+char *pass_line(void);
+char *var_build(char *var_name, char *var_value);
+int _setenviron(char *var_name, char *var_value);
+int _unsetenviron(char *var_name);
+int _exec(char **tokens, char *args);
+int _stringlength(char *s);
+char *_stringcat(char *dest, char *src);
+unsigned int _white_space_checker(char *s);
+char **_stringtotokens(char *str);
+int _writechar(char c);
+int _stringcomp(char *s1, char *s2);
+int _atoi(char *s);
+char *_stringcpy(char *dest, char *src);
+int equal_delim(char c, const char *delim);
+char *_stringtokarr(char *src, const char *delim);
+void ctrlc(int signum);
+ssize_t custom_getline(char **str);
+char *_stringduplicate(char *str);
+void _exitShell(char **tokens, char *line);
+int _execBuiltIn(char **tokens);
+int _myBuiltIn(char *str);
+void _printsenvironment(void);
+int file_status(char *s);
+char *path_constructor(char **tokens);
+int path_execute(char **tokens, char *path, char *args);
+int main(int argc, char *argv[]);
+void prompt(void);
+int _cd(char *path);
+
+/*void _kill(char *lineptr, char *tmp, char **tok);*/
+
 
 #endif
