@@ -1,18 +1,15 @@
 #include "main.h"
-
 /**
  * main - Entry to my created Simple Shell program.
  * @argc: Num of arguments.
  * @argv: Ptr to array of arguments.
  * Return: Always 0 if success else 1.
  */
-
 int main(int argc, char *argv[])
 {
 	char *line;
 	int Status;
 	char **tokens;
-
 	(void)argc;
 
 	signal(SIGINT, ctrlc);
@@ -20,7 +17,6 @@ int main(int argc, char *argv[])
 	while (Status == 0)
 	{
 		prompt();
-
 		line = pass_line();
 		if (_stringcomp(line, "\n") == 0)
 		{
@@ -35,7 +31,6 @@ int main(int argc, char *argv[])
 			free(line);
 			continue;
 		}
-
 		if (_stringcomp(tokens[0], "exit") == 0)
 		{
 			_exitShell(tokens, line);

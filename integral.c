@@ -52,7 +52,6 @@ void printenvironment(void)
  */
 int _execmybuiltin(char **tokens)
 {
-
 	if ((_stringcomp(*tokens, "env")) == 0)
 	{
 		printenvironment();
@@ -66,7 +65,6 @@ int _execmybuiltin(char **tokens)
 			_setenviron(tokens[1], tokens[2]);
 			return (0);
 		}
-
 		printf("Usage: setenv var_name var_value\n");
 		return (0);
 	}
@@ -78,7 +76,6 @@ int _execmybuiltin(char **tokens)
 			_unsetenviron(tokens[1]);
 			return (0);
 		}
-
 		printf("Usage: unsetenv VAR_NAME\n");
 		return (0);
 	}
@@ -91,10 +88,9 @@ int _execmybuiltin(char **tokens)
 		else
 		{
 			fprintf(stderr, "usage: cd <dir>\n");
-			return -1;
+			return (-1);
 		}
 	}
-
 	return (1);
 }
 /**
