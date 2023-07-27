@@ -3,7 +3,7 @@
 /**
  * _stingtokarr - mimcing strtokand turn to array.
  * @src: Stri from getline.
- * @delim: " ";
+ * @delim: i refer to " ";
  * Return: Inal token in array format.
  */
 
@@ -33,29 +33,10 @@ char *_stingtokarr(char *src, const char *delim)
 	s = s + _stringlength(s) + is_space;
 	return (result);
 }
-/**
- * equal_delim - Check if char is equal to delim.
- * @c: character.
- * @delim: " "
- * Return: 0 if no match, 1 if matched.
- */
-
-int equal_delim(char c, const char *delim)
-{
-	while (delim && *delim)
-	{
-		if (c == *delim)
-		{
-			return (1);
-		}
-		++delim;
-	}
-	return (0);
-}
 
 /**
  * custom_getline - Stores user's command into shell.
- * @str: Buffer.
+ * @str: is the Buffer.
  * Return: Num oters read.
  */
 ssize_t custom_getline(char **str)

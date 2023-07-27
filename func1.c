@@ -1,22 +1,6 @@
 #include "main.h"
 
 /**
- * _stringlength - Returns given length of a string.
- * @s: Poiter to strng.
- * Return: Length of s.
- */
-int _stringlength(char *s)
-{
-	int index;
-
-	index = 0;
-	while (s[index] != '\0')
-	{
-		index++;
-	}
-	return (index);
-}
-/**
  * _stringcat - Concatenates given two strings.
  * @dest: Pointer to str to be conatenated upon.
  * @src: Pointer to stri to append to dest.
@@ -57,6 +41,22 @@ unsigned int _white_space_check(char *s)
 	}
 	return (count);
 }
+/**
+ * _stringlength - Returns given length of a string.
+ * @s: Poiter to strng.
+ * Return: Length of s.
+ */
+int _stringlength(char *s)
+{
+	int index;
+
+	index = 0;
+	while (s[index] != '\0')
+	{
+		index++;
+	}
+	return (index);
+}
 
 /**
  * _stringtotoken - splis a string into words.
@@ -89,24 +89,4 @@ char **_stringtotoken(char *str)
 	tokens[i] =  NULL;
 
 	return (tokens);
-}
-
-
-
-/**
- * _printstring - prints a stg, followed by a new line, to stdout.
- * @str: string to print.
- */
-
-void _printstring(char *str)
-{
-	unsigned long i = 0;
-
-	while (str[i] != '\0')
-	{
-		writechar(str[i]);
-		i++;
-	}
-
-	writechar('\n');
 }
