@@ -23,6 +23,10 @@ int mybuiltin(char *str)
 	{
 		return (0);
 	}
+	if ((_stringcomp(str, "cd")) == 0)
+	{
+		return (0);
+	}
 	return (1);
 }
 
@@ -77,6 +81,18 @@ int _execmybuiltin(char **tokens)
 
 		printf("Usage: unsetenv VAR_NAME\n");
 		return (0);
+	}
+	if (_stringcomp(*tokens, "cd") == 0)
+	{
+		if (tokens[1])
+		{
+			return (_cd(tokens[1]));
+		}
+		else
+		{
+			fprintf(stderr, "usage: cd <dir>\n");
+			return -1;
+		}
 	}
 
 	return (1);

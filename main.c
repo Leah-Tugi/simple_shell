@@ -43,6 +43,10 @@ int main(int argc, char *argv[])
 		else
 		{
 			Status =  _exec(tokens, argv[0]);
+			if (Status == -1)
+			{
+				Status = 0;
+			}
 		}
 		free(line);
 		free(tokens);

@@ -43,5 +43,6 @@ char *buid_var(char *var_name, char *var_value);
 int _setenviron(char *var_name, char *var_value);
 int _unsetenviron(char *var_name);
 char *_stringduplicate(char *str);
+int _cd(char *path);
 
 #endif
