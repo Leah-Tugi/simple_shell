@@ -1,26 +1,6 @@
 #include "main.h"
 
 /**
- * equal_delim - Check if char is equal to delim.
- * @c: character.
- * @delim: " "
- * Return: 0 if no match, 1 if matched.
- */
-
-int equal_delim(char c, const char *delim)
-{
-	while (delim && *delim)
-	{
-		if (c == *delim)
-		{
-			return (1);
-		}
-		++delim;
-	}
-	return (0);
-}
-
-/**
  * _stingtokarr - mimcing strtokand turn to array.
  * @src: Stri from getline.
  * @delim: " ";
@@ -53,20 +33,25 @@ char *_stingtokarr(char *src, const char *delim)
 	s = s + _stringlength(s) + is_space;
 	return (result);
 }
-
 /**
- *ctrlc - Control C given it doesnt exithandler.
- *@signum: The signal number received.
- *
- *Return: Void.
+ * equal_delim - Check if char is equal to delim.
+ * @c: character.
+ * @delim: " "
+ * Return: 0 if no match, 1 if matched.
  */
-void ctrlc(int signum)
+
+int equal_delim(char c, const char *delim)
 {
-	(void)signum;
-
-	write(STDOUT_FILENO, "\n#cisfun$", 10);
+	while (delim && *delim)
+	{
+		if (c == *delim)
+		{
+			return (1);
+		}
+		++delim;
+	}
+	return (0);
 }
-
 
 /**
  * custom_getline - Stores user's command into shell.
