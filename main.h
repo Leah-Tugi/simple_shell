@@ -28,7 +28,6 @@ int _stringcomp(char *s1, char *s2);
 int _execmybuiltin(char **tokens);
 int mybuiltin(char *str);
 int _atoi(char *s);
-void _kill(char *lineptr, char *tmp, char **tok);
 void _exitShell(char **tokens, char *line);
 void ctrlc(int signum);
 int equal_delim(char c, const char *delim);
